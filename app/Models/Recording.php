@@ -1,15 +1,12 @@
 <?php
 
+// app/Models/Recording.php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Recording extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'class_id',
         'file_url',
@@ -22,7 +19,7 @@ class Recording extends Model
         'recorded_at' => 'datetime',
     ];
 
-    public function classroom(): BelongsTo
+    public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'class_id');
     }

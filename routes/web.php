@@ -3,6 +3,8 @@
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecordingController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +13,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::post('/recordings', [RecordingController::class, 'store'])->name('recordings.store');
 
     Route::resource('classes', ClassroomController::class);
     Route::get('/classes/{class}/live', [ClassroomController::class, 'live'])->name('classes.live');
